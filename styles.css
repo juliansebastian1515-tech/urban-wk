@@ -2,12 +2,38 @@
 body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
 
 .header { position: fixed; top: 0; left: 0; right: 0; background: white; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between; z-index: 100; border-bottom: 1px solid #eee; }
+.header-container{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo img{
+    height:55px;
+    width:auto;
+}
 .logo-text { font-size: 24px; font-weight: 900; letter-spacing: 2px; }
 .logo-star { color: #0066cc; }
-.nav-desktop { display: none; gap: 30px; }
+.nav-desktop {
+    display: flex;
+    gap: 40px;
+}
 .nav-desktop a { text-decoration: none; color: #333; font-weight: 600; text-transform: uppercase; font-size: 14px; }
 .menu-toggle { font-size: 24px; cursor: pointer; }
-.cart-btn { font-size: 20px; cursor: pointer; position: relative; }
+.cart-btn{
+    background:none;
+    border:none;
+    font-size:24px;
+    cursor:pointer;
+    position:relative;
+}
 .cart-count { position: absolute; top: -8px; right: -8px; background: #111; color: white; font-size: 10px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
 .mobile-menu { display: none; position: absolute; top: 70px; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
