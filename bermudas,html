@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bermudas - Urban W&K</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section class="products-section">
+
+    <div class="section-header">
+        <h2 class="section-title">BERMUDAS</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="products-grid">
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="imagenes/camiseta1.jpg">
+            </div>
+
+            <div class="product-info">
+                <h3 class="product-name">Bermuda Jordan</h3>
+                <p class="product-category">Bermudas</p>
+
+                <div class="product-footer">
+                    <span class="product-price">$70.000</span>
+                    <button class="btn-add">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
