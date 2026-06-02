@@ -183,7 +183,7 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
 .products-section {
     padding: 80px 40px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 100px auto 0 auto;
 }
 
 .section-header {
@@ -212,6 +212,13 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
 
 .product-card {
     background: white;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
 }
 
 .product-image {
