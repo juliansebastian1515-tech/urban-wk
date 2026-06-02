@@ -3,10 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>oversize - Urban W&K</title>
+<title>Oversize - Urban W&K</title>
 <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
+<header class="header">
+    <div class="header-container">
+
+        <nav class="nav-desktop">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="colecciones.html">Colecciones</a>
+            <a href="nosotros.html">Nosotros</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button class="cart-btn" onclick="toggleCart()">
+                🛒
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
+
+            <div class="logo">
+                <a href="index.html">
+                    <img src="imagenes/logo.jpg" alt="Urban W&K Logo">
+                </a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        </div>
+
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" onclick="toggleMenu()">Inicio</a>
+        <a href="index.html#productos" onclick="toggleMenu()">Productos</a>
+        <a href="colecciones.html" onclick="toggleMenu()">Colecciones</a>
+        <a href="nosotros.html" onclick="toggleMenu()">Nosotros</a>
+    </div>
+
+</header>
 
 <section class="products-section">
 
@@ -19,11 +58,11 @@
 
         <div class="product-card">
             <div class="product-image">
-                <img src="imagenes/camiseta1.jpg">
+                <img src="imagenes/camiseta1.jpg" alt="Pantalón Oversize">
             </div>
 
             <div class="product-info">
-                <h3 class="product-name">Pantalon Oversize</h3>
+                <h3 class="product-name">Pantalón Oversize</h3>
                 <p class="product-category">Oversize</p>
 
                 <div class="product-footer">
@@ -36,6 +75,8 @@
     </div>
 
 </section>
+
+<script src="script.js"></script>
 
 </body>
 </html>
