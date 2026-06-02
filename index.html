@@ -6,153 +6,183 @@
     <title>Urban W&K - Moda Urbana | Cúcuta</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
     <style>
-   
         .logo img {
-            max-height: 50px; 
+            max-height: 50px;
             width: auto;
             object-fit: contain;
         }
     </style>
 </head>
+
 <body>
-    <header class="header">
-        <div class="header-container">
-      <nav class="nav-desktop">
-    <a href="#inicio">Inicio</a>
-    <a href="#productos">Productos</a>
-    <a href="#colecciones">Colecciones</a>
-    <a href="#nosotros">Nosotros</a>
-</nav>
 
-<div class="header-actions">
-    <button class="cart-btn" onclick="toggleCart()">
-        🛒
-        <span id="cart-count" class="cart-count">0</span>
-    </button>
+<header class="header">
+    <div class="header-container">
 
-    <div class="logo">
-        <a href="#inicio">
-            <img src="imagenes/logo.jpg" alt="Urban W&K Logo">
-        </a>
+        <nav class="nav-desktop">
+            <a href="#inicio">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="#colecciones">Colecciones</a>
+            <a href="#nosotros">Nosotros</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button class="cart-btn" onclick="toggleCart()">
+                🛒
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
+
+            <div class="logo">
+                <a href="#inicio">
+                    <img src="imagenes/logo.jpg" alt="Urban W&K Logo">
+                </a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        </div>
+
     </div>
 
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+        <a href="#productos" onclick="toggleMenu()">Productos</a>
+        <a href="#colecciones" onclick="toggleMenu()">Colecciones</a>
+        <a href="#nosotros" onclick="toggleMenu()">Nosotros</a>
+    </div>
+</header>
+
+<section id="inicio" class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">DEFINE TU ESTILO</h1>
+        <p class="hero-subtitle">Moda urbana que marca la diferencia</p>
+        <div class="hero-buttons">
+            <a href="#productos" class="btn btn-primary">VER COLECCIÓN</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="imagenes/banner.jpg" alt="Urban Fashion">
+    </div>
+
+    <div class="hero-overlay"></div>
+</section>
+
+<section id="productos" class="products-section">
+    <div class="section-header">
+        <h2 class="section-title">PRODUCTOS DESTACADOS</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="products-grid">
+
+        <div class="product-card">
+            <div class="product-badge">NUEVO</div>
+
+            <div class="product-image">
+                <img src="imagenes/producto1.jpg" alt="Camiseta Urban">
+            </div>
+
+            <div class="product-info">
+                <h3 class="product-name">Camiseta Urban Street</h3>
+                <p class="product-category">Camisetas</p>
+
+                <div class="product-footer">
+                    <span class="product-price">$89.900</span>
+
+                    <button class="btn-add" onclick="addToCart('Camiseta Urban Street', 89900, 'imagenes/producto1.jpg')">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-badge popular">POPULAR</div>
+
+            <div class="product-image">
+                <img src="imagenes/producto2.jpg" alt="Buzo Urban">
+            </div>
+
+            <div class="product-info">
+                <h3 class="product-name">Buzo Oversized Black</h3>
+                <p class="product-category">Buzos</p>
+
+                <div class="product-footer">
+                    <span class="product-price">$159.900</span>
+
+                    <button class="btn-add" onclick="addToCart('Buzo Oversized Black', 159900, 'imagenes/producto2.jpg')">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-badge">OFERTA</div>
+
+            <div class="product-image">
+                <img src="imagenes/producto3.jpg" alt="Sneakers">
+            </div>
+
+            <div class="product-info">
+                <h3 class="product-name">Sneakers Urban Red</h3>
+                <p class="product-category">Calzado</p>
+
+                <div class="product-footer">
+                    <span class="product-price">$299.900</span>
+
+                    <button class="btn-add" onclick="addToCart('Sneakers Urban Red', 299900, 'imagenes/producto3.jpg')">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>URBAN <span class="star">W★</span></h3>
+            <p>©️ 2026 Urban W&K. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+
+    <div class="cart-panel">
+        <div class="cart-header">
+            <h2>TU CARRITO</h2>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+
+        <div class="cart-body">
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart">Tu carrito está vacío</p>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">$0</span>
+            </div>
+
+            <button class="btn-checkout" onclick="checkout()">
+                FINALIZAR COMPRA
+            </button>
+        </div>
+    </div>
 </div>
 
-        <div class="mobile-menu" id="mobile-menu">
-            <a href="#inicio" onclick="toggleMenu()">Inicio</a>
-            <a href="#productos" onclick="toggleMenu()">Productos</a>
-            <a href="#colecciones" onclick="toggleMenu()">Colecciones</a>
-            <a href="#nosotros" onclick="toggleMenu()">Nosotros</a>
-        </div>
-    </header>
+<script src="script.js"></script>
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">DEFINE TU ESTILO</h1>
-            <p class="hero-subtitle">Moda urbana que marca la diferencia</p>
-            <div class="hero-buttons">
-                <a href="#productos" class="btn btn-primary">VER COLECCIÓN</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="imagenes/banner.jpg" alt="Urban Fashion">
-        </div>
-        <div class="hero-overlay"></div>
-    </section>
-
-    <section id="productos" class="products-section">
-        <div class="section-header">
-            <h2 class="section-title">PRODUCTOS DESTACADOS</h2>
-            <div class="section-line"></div>
-        </div>
-
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-badge">NUEVO</div>
-                <div class="product-image">
-                    <img src="imagenes/producto1.jpg" alt="Camiseta Urban">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Camiseta Urban Street</h3>
-                    <p class="product-category">Camisetas</p>
-                    <div class="product-footer">
-                        <span class="product-price">$89.900</span>
-                       <button class="btn-add" onclick="addToCart('Camiseta Urban Street', 89900, 'imagenes/producto1.jpg')">
-                            Agregar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-badge popular">POPULAR</div>
-                <div class="product-image">
-                    <img src="imagenes/producto2.jpg" alt="Buzo Urban">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Buzo Oversized Black</h3>
-                    <p class="product-category">Buzos</p>
-                    <div class="product-footer">
-                        <span class="product-price">$159.900</span>
-                        <button class="btn-add" onclick="addToCart('Buzo Oversized Black', 159900, 'imagenes/producto2.jpg')">
-                            Agregar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-badge">OFERTA</div>
-                <div class="product-image">
-                    <img src="imagenes/producto3.jpg" alt="Sneakers">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Sneakers Urban Red</h3>
-                    <p class="product-category">Calzado</p>
-                    <div class="product-footer">
-                        <span class="product-price">$299.900</span>
-                        <button class="btn-add" onclick="addToCart('Sneakers Urban Red', 299900, 'imagenes/producto3.jpg')">
-                            Agregar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>URBAN <span class="star">W★</span></h3>
-                <p>©️ 2026 Urban W&K. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-overlay" onclick="toggleCart()"></div>
-        <div class="cart-panel">
-            <div class="cart-header">
-                <h2>TU CARRITO</h2>
-                <button class="close-cart" onclick="toggleCart()">✕</button>
-            </div>
-            <div class="cart-body">
-                <div id="cart-items" class="cart-items">
-                    <p class="empty-cart">Tu carrito está vacío</p>
-                </div>
-            </div>
-            <div class="cart-footer">
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span id="cart-total-price">$0</span>
-                </div>
-                <button class="btn-checkout" onclick="checkout()">FINALIZAR COMPRA</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
