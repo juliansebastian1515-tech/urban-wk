@@ -22,8 +22,19 @@ function addToCart(name, price, image) {
     showNotification('Producto agregado al carrito');
 }
 
-function removeFromCart(index) {
-    cart.splice(index, 1);
+function increaseQuantity(index) {
+    cart[index].quantity++;
+    updateCart();
+}
+
+function decreaseQuantity(index) {
+
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+    } else {
+        cart.splice(index, 1);
+    }
+
     updateCart();
 }
 
