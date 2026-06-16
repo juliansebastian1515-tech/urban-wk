@@ -429,8 +429,24 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
     cursor: pointer;
 }
 
-.cart-item input[type="number"] {
-    width: 60px;
-    text-align: center;
-    padding: 5px;
+.cart-item input[type="number"]{
+    width:60px;
+    text-align:center;
+    padding:5px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+.close-cart{
+    background:none;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.cart-item h4{
+    margin-bottom:5px;
+}
+
+.cart-item p{
+    margin-bottom:5px;
 }
