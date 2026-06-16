@@ -424,4 +424,13 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
     border:1px solid #ddd;
     border-radius:10px;
 }
+.cart-item button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
 
+.cart-item input[type="number"] {
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+}
