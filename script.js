@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function addToCart(name, price, image) {
+
     const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity++;
     } else {
         cart.push({
             name: name,
@@ -22,7 +23,14 @@ function addToCart(name, price, image) {
     showNotification('Producto agregado al carrito');
 }
 
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+    updateCart();
+}
+
 function increaseQuantity(index) {
+
     cart[index].quantity++;
     updateCart();
 }
@@ -38,6 +46,19 @@ function decreaseQuantity(index) {
     updateCart();
 }
 
+function setQuantity(index, value) {
+
+    const cantidad = parseInt(value);
+
+    if (!isNaN(cantidad) && cantidad > 0) {
+        cart[index].quantity = cantidad;
+    } else {
+        cart[index].quantity = 1;
+    }
+
+    updateCart();
+}
+
 function updateCart() {
 
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -47,6 +68,7 @@ function updateCart() {
     const cartTotalPrice = document.getElementById('cart-total-price');
 
     if (cartCount) {
+
         cartCount.textContent =
             cart.reduce((sum, item) => sum + item.quantity, 0);
     }
@@ -62,14 +84,38 @@ function updateCart() {
 
         cartItems.innerHTML = cart.map((item, index) => `
             <div class="cart-item">
+
                 <img src="${item.image}" alt="${item.name}">
 
                 <div>
+
                     <h4>${item.name}</h4>
 
                     <p>
                         $${(item.price * item.quantity).toLocaleString()} COP
                     </p>
+
+                    <div style="display:flex;align-items:center;gap:5px;margin-top:5px;">
+
+                        <button onclick="decreaseQuantity(${index})">
+                            -
+                        </button>
+
+                        <input
+                            type="number"
+                            min="1"
+                            value="${item.quantity}"
+                            onchange="setQuantity(${index}, this.value)"
+                            style="
+                                width:60px;
+                                text-align:center;
+                            ">
+
+                        <button onclick="increaseQuantity(${index})">
+                            +
+                        </button>
+
+                    </div>
 
                     <button
                         onclick="removeFromCart(${index})"
@@ -78,10 +124,13 @@ function updateCart() {
                             background:none;
                             border:none;
                             cursor:pointer;
+                            margin-top:5px;
                         ">
                         Eliminar
                     </button>
+
                 </div>
+
             </div>
         `).join('');
     }
@@ -154,6 +203,7 @@ function showNotification(msg) {
         notif.remove();
     }, 2000);
 }
+
 function mostrarQR() {
 
     const metodo =
@@ -166,24 +216,21 @@ function mostrarQR() {
 
         qr.innerHTML = `
             <h4>Escanea y paga por Nequi</h4>
-            <img src="imagenes/nequi.jpg"
-                 width="250">
+            <img src="imagenes/nequi.jpg" width="250">
         `;
 
     } else if (metodo === "Bancolombia") {
 
         qr.innerHTML = `
             <h4>Escanea y paga por Bancolombia</h4>
-            <img src="imagenes/bancolombia.jpg"
-                 width="250">
+            <img src="imagenes/bancolombia.jpg" width="250">
         `;
 
     } else if (metodo === "Daviplata") {
 
         qr.innerHTML = `
             <h4>Escanea y paga por Daviplata</h4>
-            <img src="imagenes/daviplata.jpg"
-                 width="250">
+            <img src="imagenes/daviplata.jpg" width="250">
         `;
 
     } else {
@@ -209,13 +256,13 @@ function enviarPedidoWhatsapp() {
     const pago =
         document.getElementById('metodoPago').value;
 
-    if(
+    if (
         !nombre ||
         !telefono ||
         !direccion ||
         !ciudad ||
         !pago
-    ){
+    ) {
         alert("Completa todos los campos");
         return;
     }
@@ -225,23 +272,13 @@ function enviarPedidoWhatsapp() {
     let mensaje =
         `*NUEVO PEDIDO URBAN W&K*%0A%0A`;
 
-    mensaje +=
-        `👤 Cliente: ${nombre}%0A`;
+    mensaje += `👤 Cliente: ${nombre}%0A`;
+    mensaje += `📱 Teléfono: ${telefono}%0A`;
+    mensaje += `📍 Dirección: ${direccion}%0A`;
+    mensaje += `🏙️ Ciudad: ${ciudad}%0A`;
+    mensaje += `💳 Pago: ${pago}%0A%0A`;
 
-    mensaje +=
-        `📱 Teléfono: ${telefono}%0A`;
-
-    mensaje +=
-        `📍 Dirección: ${direccion}%0A`;
-
-    mensaje +=
-        `🏙️ Ciudad: ${ciudad}%0A`;
-
-    mensaje +=
-        `💳 Pago: ${pago}%0A%0A`;
-
-    mensaje +=
-        `🛒 PRODUCTOS:%0A`;
+    mensaje += `🛒 PRODUCTOS:%0A`;
 
     cart.forEach(item => {
 
