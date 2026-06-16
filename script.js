@@ -109,25 +109,14 @@ function checkout() {
         return;
     }
 
-    let message =
-        '¡Hola! Quiero realizar un pedido:%0A%0A';
+    document.getElementById('checkout-form').style.display = 'block';
 
-    let total = 0;
+    toggleCart();
 
-    cart.forEach(item => {
-
-        message +=
-            `• ${item.name} - $${item.price.toLocaleString()} x ${item.quantity}%0A`;
-
-        total += item.price * item.quantity;
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
     });
-
-    message += `%0ATotal: $${total.toLocaleString()} COP`;
-
-    window.open(
-        `https://wa.me/573112223344?text=${message}`,
-        '_blank'
-    );
 }
 
 function showNotification(msg) {
