@@ -181,6 +181,34 @@
         </div>
     </div>
 </div>
+<div id="checkout-form" style="display:none; padding:20px; background:white;">
+
+    <h2>Datos de Envío</h2>
+
+    <input type="text" id="clienteNombre" placeholder="Nombre completo" class="checkout-input">
+
+    <input type="tel" id="clienteTelefono" placeholder="Teléfono" class="checkout-input">
+
+    <input type="text" id="clienteDireccion" placeholder="Dirección de entrega" class="checkout-input">
+
+    <input type="text" id="clienteCiudad" placeholder="Ciudad" class="checkout-input">
+
+    <h3>Método de Pago</h3>
+
+    <select id="metodoPago" onchange="mostrarQR()" class="checkout-input">
+        <option value="">Seleccione...</option>
+        <option value="Nequi">Nequi</option>
+        <option value="Bancolombia">Bancolombia</option>
+        <option value="Daviplata">Daviplata</option>
+    </select>
+
+    <div id="contenedorQR"></div>
+
+    <button class="btn-checkout" onclick="enviarPedidoWhatsapp()">
+        ENVIAR PEDIDO
+    </button>
+
+</div>
 
 <script src="script.js"></script>
 
